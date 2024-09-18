@@ -1,0 +1,21 @@
+1) Install build dependencies
+
+Install these:
+brew install automake
+brew install autoconf
+brew install gettext
+brew install pkg-config
+brew install openssl@3
+
+Maybe these too:
+brew install libtool
+brew install make
+brew install gcc
+brew install perf
+brew install gperf
+
+2) Run ./autogen-arm64.sh for arm64 on macOS o r./autogen-x64.sh for X64 on macOS.
+TODO: create iOS & other builds
+
+3) Run make
+4. Run sudo make install
