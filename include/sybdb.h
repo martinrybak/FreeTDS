@@ -145,7 +145,7 @@ typedef int (*DB_DBHNDLINTR_FUNC) (void *dbproc);
 #endif
 typedef int STATUS;
 #if !defined(_WINDEF_) && !defined(_WINDEF_H) && !defined(DOS32X)
-/* typedef int BOOL; disabled for macos */
+typedef int BOOL;
 #endif
 #endif
 
