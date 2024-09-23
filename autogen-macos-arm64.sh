@@ -2,9 +2,10 @@
 # Builds FreeTDS for arm64 using the macOS SDK
 
 OUTPUT="$(readlink -f ~/Desktop)/freetds/macos/arm64"
-HOST="aarch64-apple-darwin"   #Machine building for
-BUILD="aarch64-apple-darwin22.6.0" #Machine building on
+HOST="arm-apple-darwin"   #Machine building for
+BUILD="x86_64-apple-darwin" #Machine building on
+CFLAGS="-arch arm64"
 
-./autogen.sh --prefix=${OUTPUT} --host=${HOST} -build ${BUILD}
+./autogen.sh --prefix=${OUTPUT} --host=${HOST} -build ${BUILD} CFLAGS="${CFLAGS}"
 make
 sudo make install

@@ -3,9 +3,9 @@
 
 OUTPUT="$(readlink -f ~/Desktop)/freetds/ios/arm64"
 SDK=`xcrun --sdk iphoneos --show-sdk-path`
-HOST="aarch64-apple-darwin"   #Machine building for
-BUILD="aarch64-apple-darwin22.6.0"  #Machine building on
-CFLAGS="-isysroot ${SDK}"
+HOST="arm-apple-darwin"   #Machine building for
+BUILD="x86_64-apple-darwin"  #Machine building on
+CFLAGS="-arch arm64 -isysroot ${SDK}"
 
 ./autogen.sh --prefix=${OUTPUT} --host=${HOST} -build ${BUILD} CFLAGS="${CFLAGS}"
 make
