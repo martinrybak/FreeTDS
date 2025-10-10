@@ -2,18 +2,42 @@
 
 ##Dependencies
 
-`brew install autoconf automake libtool libiconv gettext gperf`
-
-##Configure
-
-`autoreconf -i`
-
-`./configure --with-gnutls  --enable-silent-rules --prefix=/tmp/freetds`
+`brew install autoconf automake libtool libiconv gettext gperf pkg-config`
 
 ##Build
 
-`./autogen-macos-arm64.sh` for arm64 on macOS
-`./autogen-macos-x64.sh` for X64 on macOS
+###macOS
+
+####Intel
+
+`./autogen-macos-x64.sh`
+
+####Apple Silicon
+
+`./autogen-macos-arm64.sh`
+
+###iOS
+
+####Devices
+
+`./autogen-ios-arm64.sh`
+
+####Simulator
+
+`./autogen-ios-x64.sh`
 
 ##Output
-Output will be in `freetds` folder on `~/Desktop`
+All builds will be in `freetds` folder on `~/Desktop`
+
+##Install Name
+The dylib's internal "install path" will point to the `freetds` desktop folder. Before embedding in an app, we have to make this path relative:
+
+`sudo install_name_tool -id "@rpath/libsybdb.dylib" libsybdb.dylib`
+
+##Installation
+
+Rename the `libsybdb.5.dylib` file to `libsybdb.dylib` and copy to the root folder of your Xcode project.
+
+Drag and drop this file from Finder onto your Xcode project settings under `General` > `Frameworks, Libraries, and Embedded Content`.
+
+Xcode will take care of the build phases and references.
